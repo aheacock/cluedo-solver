@@ -12,13 +12,6 @@
   define("EMAIL_PATH", VIEW_PATH."email/");
   define("FORM_PATH", "form/");
 
-  define("KES_ID", 1);
-
-  define("MAX_AMOUNT", 1000000000);
-  define("MAX_TEXT_LENGTH", 65000);
-  define("MAX_NAME_LENGTH", 127);
-  define("MAX_TERM", 2100);
-
-  define("editing_rights", 0);
-  define("viewing_rights", 1);
-  define("no_rights", -1);
+  define("weapon", 1);
+  define("suspect", 2);
+  define("room", 3);
