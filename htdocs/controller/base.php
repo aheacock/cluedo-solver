@@ -3,7 +3,7 @@
   header_if(!validate_input(array("action", "controller"), array("tags")), 400);
 
   $full_controller = $_GET["controller"];
-  header_if(!in_array($full_controller, array("initialisation", "turn")), 404);
+  header_if(!in_array($full_controller, array("game")), 404);
 
   $query_array = compute_query_array();
 
