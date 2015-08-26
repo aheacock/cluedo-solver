@@ -26,11 +26,12 @@
     return 0;
   }
 
-  function select_players($criteria, $order_by = NULL, $ascending = true) {
-    return select_entries(
+  function select_players($criteria = array(), $order_by = NULL, $ascending = true) {
+    set_if_not_set($criteria["game"], $_SESSION["game"]);
+    return select_with_request_string(
+      "player as id",
       "player",
       array("player", "cards", "game"),
-      array(),
       array(),
       $criteria,
       $order_by,
