@@ -44,6 +44,13 @@
           </script>";
         }
         break;
+      case "quantity":
+        $options = array();
+        for ($i=0; $i <= $field["max"]; $i++) {
+          $options[$i] = $i;
+        }
+        $form_input = form_group_select($label, $field_name, $options, array($field["value"]), $form["name"], $parameters);
+        break;
       }
       if (!is_empty($field["disabled"])) {
         return "<fieldset disabled>".$form_input."</fieldset>";

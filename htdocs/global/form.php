@@ -58,6 +58,14 @@
           $valid = true;
         }
         break;
+        case "quantity":
+        if (is_numeric($value)) {
+          $translated_input[$name] = round($value);
+          $valid = true;
+        } elseif (is_empty($value)) {
+          $valid = true;
+        }
+        break;
         case "date";
         $regex = "/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/";
         $matched_groups = array();
@@ -134,7 +142,7 @@
           }
         }
         break;
-        case "amount":
+        case "quantity":
         if ($value < $field["min"]) {
           add_form_error($form["name"], $name, ucfirst($field["human_name"])." doit être supérieur à ".pretty_amount($field["min"], false).".");
         }
@@ -205,6 +213,7 @@
   function default_value_for_type($type) {
     $default_value = array(
       "amount" => 0,
+      "quantity" => 0,
       "date" => "",
       "id" => 1,
       "boolean" => 0,
@@ -283,4 +292,10 @@
 
   function create_boolean_field($human_name, $properties = array()) {
     return create_form_field("boolean", $human_name, $properties);
+  }
+
+  function create_quantity_field($human_name, $maximum, $properties = array()) {
+    $properties["min"] = 0;
+    $properties["max"] = $maximum;
+    return create_form_field("quantity", $human_name, $properties);
   }
