@@ -35,6 +35,19 @@
       add_card_owner_status($_POST["room"], $player, not_owned);
       add_card_owner_status($_POST["suspect"], $player, not_owned);
     }
+    if (!is_empty($_POST["evidence"])) {
+      switch ($_POST["evidence"]) {
+        case room:
+          add_card_owner_status($_POST["room"], $_POST["witness"], owned);
+          break;
+        case weapon:
+          add_card_owner_status($_POST["weapon"], $_POST["witness"], owned);
+          break;
+        case suspect:
+          add_card_owner_status($_POST["suspect"], $_POST["witness"], owned);
+          break;
+      }
+    }
     increment_turn();
     redirect_to_action("show");
     break;

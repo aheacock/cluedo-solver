@@ -6,26 +6,30 @@
     $values["game"] = $_SESSION["game"];
     return create_entry(
       "player",
-      array("id", "cards", "game"),
+      array("player", "cards", "game"),
       array(),
       $values
     );
   }
 
-  function select_player($player, $fields = array()) {
-    $player = select_entry(
+  function select_cards_player($player) {
+    $player = select_with_request_string(
+      "cards",
       "player",
-      array("id", "cards", "game"),
-      $player,
-      $fields
+      array("player", "cards", "game"),
+      array(),
+      array("game" => $_SESSION["game"], "player" => $player)
     );
-    return $player;
+    if (!is_empty($player[0]["cards"])) {
+      return $player[0]["cards"];
+    }
+    return 0;
   }
 
   function select_players($criteria, $order_by = NULL, $ascending = true) {
     return select_entries(
       "player",
-      array("id", "cards", "game"),
+      array("player", "cards", "game"),
       array(),
       array(),
       $criteria,
