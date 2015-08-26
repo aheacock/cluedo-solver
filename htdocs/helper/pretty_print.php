@@ -14,8 +14,8 @@
     return ($date != "0000-00-00") ? strftime("%d/%m/%Y",strtotime($date)) : "" ;
   }
 
-  function pretty_suspect($suspect) {
-    return select_card($suspect, array("name"))["name"];
+  function pretty_card($suspect) {
+    return select_card($suspect["id"], array("name"))["name"];
   }
 
   function pretty_game($game) {

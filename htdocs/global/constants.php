@@ -20,6 +20,7 @@
   define("very_likely", 2);
   define("likely", 1);
   define("not_owned", 0);
+  define("unknown", -1);
 
   define("MAX_AMOUNT", 1000000000);
   define("MAX_TEXT_LENGTH", 65000);

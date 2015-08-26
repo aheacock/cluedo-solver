@@ -12,18 +12,6 @@
     }
   }
 
-  function make_term_id($binet_id,$term){
-		return $binet_id."/".$term ;
-  }
-
-  function binet_term_id($binet, $term) {
-    return (select_binet($binet, array("clean_name"))["clean_name"])."/".$term;
-  }
-
-  function binet_prefix($binet, $term) {
-    return "binet/".binet_term_id($binet, $term);
-  }
-
   function redirect_to_action($action) {
     $path = path($action, $_GET["controller"], (isset($GLOBALS[$_GET["controller"]]["id"]) && $_GET["action"] != "delete" && !in_array($action, array("new", "create", "index")) ? $GLOBALS[$_GET["controller"]]["id"] : ""), (isset($_GET["prefix"]) && $_GET["prefix"] == "binet" ? binet_prefix(binet, term) : ""));
     redirect_to_path($path);
@@ -72,13 +60,6 @@
     $variable === 0.0;
   }
 
-  function connected_student() {
-    if (validate_input(array("student"), array(), "session") && exists_student($_SESSION["student"])) {
-      return $_SESSION["student"];
-    }
-    return false;
-  }
-
   function set_editable_entry_for_form($table, $object, $form_fields) {
     $id = $object["id"];
     if (isset($_SESSION[$table]) && $_SESSION[$table] != array("errors" => array())) {
@@ -101,23 +82,6 @@
       return "";
     }
     return preg_replace("/^\s*(\S(.*\S)?)\s*$/", "$1", $string);
-  }
-
-  function tag_is_selected($tag, $query_array) {
-    return !is_empty($query_array["tags"]) && in_array(tag_to_clean_name($tag), $query_array["tags"]);
-  }
-
-  function tag_to_clean_name($tag) {
-    return select_tag($tag, array("clean_name"))["clean_name"];
-  }
-
-  function tag_array_to_string($tags) {
-    return implode("+", array_map("tag_to_clean_name", $tags));
-  }
-
-  // not working and useless
-  function date_in_n_days($n) {
-    return date("Y-m-d", time() + mktime(0, 0, 0, 0, $n, 0));
   }
 
   function current_date() {

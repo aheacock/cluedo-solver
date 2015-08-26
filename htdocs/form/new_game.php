@@ -5,7 +5,7 @@
   $form["html_form_path"] = VIEW_PATH."game/new_form.php";
 
   foreach (select_suspects() as $suspect) {
-    $form["fields"]["cards_suspect_".$suspect["id"]] = create_quantity_field("le nombre de cartes de ".pretty_suspect($suspect["id"]), dealed_card_number, array("optional" => 1));
+    $form["fields"]["cards_suspect_".$suspect["id"]] = create_quantity_field("le nombre de cartes de ".pretty_card($suspect), dealed_card_number, array("optional" => 1));
   }
   $form["fields"]["known_cards"] = create_id_field("mes cartes", "card", array("multiple" => 1, "optional" => 1));
   $form["fields"]["identity"] = create_id_field("mon identité", "card");
