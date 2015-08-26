@@ -31,3 +31,18 @@
   }
 
   $form["validations"] = array("check_total_card_number", "check_known_cards_matches");
+
+  function structured_cards_suspect_maker($validated_input) {
+    $structured_input["cards_suspect"] = array();
+    foreach ($validated_input as $name => $value) {
+      $matched_groups = array();
+      if (preg_match("/^cards_suspect_([0-9]*)$/", $name, $matched_groups)) {
+        $structured_input["cards_suspect"][$matched_groups[1]] = $value;
+      } else {
+        $structured_input[$name] = $value;
+      }
+    }
+    return $structured_input;
+  }
+
+  $form["structured_input_maker"] = "structured_cards_suspect_maker";
