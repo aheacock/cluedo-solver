@@ -28,10 +28,13 @@
     break;
 
   case "turn":
+    create_turn($_POST);
+    increment_turn();
     redirect_to_action("show");
     break;
 
   case "skip":
+    increment_turn();
     redirect_to_action("show");
     break;
 
