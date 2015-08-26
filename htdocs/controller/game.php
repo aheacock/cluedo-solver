@@ -23,6 +23,7 @@
     foreach ($_POST["known_cards"] as $card) {
       add_card_owner_status($card, $_POST["identity"], owned);
     }
+    $_SESSION["current_player"] = select_suspects()[0]["id"];
     redirect_to_action("show");
     break;
 
