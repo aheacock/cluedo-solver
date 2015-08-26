@@ -28,6 +28,7 @@
   include MODEL_PATH."owned.php";
   include MODEL_PATH."player.php";
   include MODEL_PATH."turn.php";
+  include MODEL_PATH."card.php";
 
   include HELPER_PATH."common.php";
   include HELPER_PATH."pretty_print.php";

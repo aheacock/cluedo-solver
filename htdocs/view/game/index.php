@@ -8,3 +8,4 @@
   }
   ?>
 </ul>
+<?php echo link_to(path("new", "game"), "Nouvelle partie", array("class" => "btn btn-primary")); ?>
