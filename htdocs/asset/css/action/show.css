@@ -555,3 +555,26 @@
     margin:5px;
   }
 }
+
+/*------------------------------------------------------------------------*/
+/* Game specific classes */
+
+.status-red {
+  background-color:rgba(173, 50, 39, 0.7);
+}
+
+.status-orange {
+  background-color:rgb(255, 175, 36);
+}
+
+.status-yellow {
+  background-color:yellow;
+}
+
+.status-white {
+  background-color:white;
+}
+
+.status-black {
+  background-color:#2e2e2e;
+}

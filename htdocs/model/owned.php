@@ -5,12 +5,19 @@
     $values["card"] = $card;
     $values["game"] = $_SESSION["game"];
     $values["status"] = $status;
-    return create_entry(
+    create_entry(
       "owned",
       array("card", "game", "player", "status"),
       array(),
       $values
     );
+    if ($status == owned) {
+      foreach (select_suspects() as $other_player) {
+        if ($other_player["id"] != $player) {
+          add_card_owner_status($card, $other_player["id"], not_owned);
+        }
+      }
+    }
   }
 
   function get_status($card, $player) {

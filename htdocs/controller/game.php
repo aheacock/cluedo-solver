@@ -1,5 +1,6 @@
 <?php
 
+  before_action("check_entry", array("show", "skip", "turn"), array("model_name" => "game"));
   before_action("create_form", array("new", "create"), "new_game");
   before_action("check_form", array("create"), "new_game");
 
@@ -32,6 +33,7 @@
     break;
 
   case "show":
+    $_SESSION["game"] = $game["id"];
     break;
 
   default:

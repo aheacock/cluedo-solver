@@ -1,12 +1,12 @@
 <?php
 
-  function create_turn($player, $room, $weapon, $suspect, $witness, $testimony) {
+  function create_turn($player, $room, $weapon, $suspect, $witness, $evidence) {
     $values["player"] = $player;
     $values["room"] = $room;
     $values["weapon"] = $weapon;
     $values["suspect"] = $suspect;
     $values["witness"] = $witness;
-    $values["testimony"] = $testimony;
+    $values["testimony"] = $evidence;
     $values["game"] = $_SESSION["game"];
     return create_entry(
       "turn",

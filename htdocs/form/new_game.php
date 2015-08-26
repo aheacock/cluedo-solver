@@ -25,7 +25,7 @@
 
   function check_known_cards_matches($input) {
     if ($input["cards_suspect_".$input["identity"][0]] != count($input["known_cards"])) {
-      return "Il faut indiquer ".$input["cards_suspect_".$input["identity"]]." cartes connues.";
+      return "Il faut indiquer ".$input["cards_suspect_".$input["identity"][0]]." cartes connues.";
     }
     return "";
   }
