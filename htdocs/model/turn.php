@@ -26,6 +26,7 @@
   }
 
   function select_turns($criteria = array(), $order_by = "", $ascending = true) {
+    set_if_not_set($criteria["game"], $_SESSION["game"]);
     return select_entries(
       "turn",
       array("id", "player", "room", "weapon", "suspect", "witness", "testimony", "game"),

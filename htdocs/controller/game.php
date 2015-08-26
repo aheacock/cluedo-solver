@@ -23,6 +23,13 @@
     foreach ($_POST["known_cards"] as $card) {
       add_card_owner_status($card, $_POST["identity"], owned);
     }
+    foreach (select_suspects() as $player) {
+      if (select_cards_player($player["id"]) == 0) {
+        foreach (select_cards() as $card) {
+          add_card_owner_status($card["id"], $player["id"], not_owned);
+        }
+      }
+    }
     $_SESSION["current_player"] = select_suspects()[0]["id"];
     redirect_to_action("show");
     break;
@@ -47,6 +54,13 @@
           add_card_owner_status($_POST["suspect"], $_POST["witness"], owned);
           break;
       }
+    }
+    if (get_status($_POST["room"], $_POST["witness"]) == not_owned && get_status($_POST["weapon"], $_POST["witness"]) == not_owned) {
+      add_card_owner_status($_POST["suspect"], $_POST["witness"], owned);
+    } elseif (get_status($_POST["weapon"], $_POST["witness"]) == not_owned && get_status($_POST["suspect"], $_POST["witness"]) == not_owned) {
+      add_card_owner_status($_POST["room"], $_POST["witness"], owned);
+    } elseif (get_status($_POST["room"], $_POST["witness"]) == not_owned && get_status($_POST["suspect"], $_POST["witness"]) == not_owned) {
+      add_card_owner_status($_POST["weapon"], $_POST["witness"], owned);
     }
     increment_turn();
     redirect_to_action("show");
