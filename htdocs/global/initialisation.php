@@ -24,7 +24,8 @@
   include GLOBAL_PATH."email.php";
   include GLOBAL_PATH."form.php";
 
-  include MODEL_PATH."card.php";
+  include MODEL_PATH."game.php";
+  include MODEL_PATH."owned.php";
   include MODEL_PATH."player.php";
   include MODEL_PATH."turn.php";
 

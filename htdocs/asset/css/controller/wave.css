@@ -1,0 +1,23 @@
+/*Use only for indexing waves */
+#page-wrapper {
+  background-color:rgba(0,0,0,0);
+}
+#wrapper {
+  padding-left:0px;
+}
+
+@media(min-width:768px){
+  #wave-index-wrapper {
+    padding-left:225px;
+    width:100%;
+  }
+}
+
+#wave-index {
+  width:534px;
+  margin:auto;
+}
+
+#wave-index>.wave {
+  background-color:#cbddff;
+}

@@ -19,7 +19,7 @@ function select_game($game, $fields = array()) {
   return $game;
 }
 
-function select_games($criteria, $order_by = NULL, $ascending = true) {
+function select_games($criteria = array(), $order_by = NULL, $ascending = true) {
   return select_entries(
     "game",
     array("id", "date"),

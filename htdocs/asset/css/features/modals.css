@@ -1,0 +1,51 @@
+/*-------------------------------------------------------------------------*/
+/*------ Modals --------------*/
+.modal-toggle {
+  cursor:pointer;
+}
+
+.modal-list-element {
+  display:block;
+  width:90%;
+  margin:auto;
+  margin-top:5px;
+  padding:5px;
+  text-align:center;
+  color:#cbddff;
+  background-color:#AD1457;
+  text-decoration:none;
+}
+
+.modal-list-element.less-active {
+  background-color:#D32F2F;
+}
+.modal-list-element:hover {
+  background-color:#AD1457;
+  text-decoration:none;
+  color:#fff;
+}
+
+.modal-list-element.less-active:hover {
+  background-color:#F44336;
+}
+
+/* Modifying Bootstrap css */
+
+.modal-content {
+  border-radius:0px;
+  background-color:#cbddff;
+  border:none;
+}
+
+.modal-content>.modal-header {
+  border-bottom:none;
+  background-color:#3399FF;
+  color:#fff;
+}
+.button-container {
+	width:100%;
+	height:30px;
+}
+.button-container>.btn{
+	float:right;
+}

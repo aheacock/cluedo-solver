@@ -1,0 +1,57 @@
+.green-background{
+  background-color: rgb(50, 173, 39);
+}
+.red-background {
+  background-color: rgb(173, 50, 39);
+}
+
+.white-text {
+  color : #fff;
+}
+.deactivated-text {
+  color:rgba(0,0,0,0.2);
+}
+.orange-background {
+  background-color: rgb(255, 175, 36);
+}
+
+.transparent-background {
+  background-color: rgba(0,0,0,0);
+}
+
+/* Greys */
+.grey-background {
+  background-color: rgb(150, 150, 150);
+}
+
+.grey-300-background {
+  background-color:#E0E0E0;
+}
+
+.grey-400-background {
+  background-color:#BDBDBD;
+}
+
+.grey-500-background {
+  background-color:#9E9E9E;
+}
+
+.blue-grey-background {
+  background-color:#607D8B;
+}
+
+.light-blue-background {
+  background-color:#cbddff;
+}
+
+.blue-background {
+  background-color:#3399FF;
+}
+
+.purple-background{
+  background-color:#EA80FC;
+}
+
+.teal-background {
+  background-color:#26A69A;
+}
