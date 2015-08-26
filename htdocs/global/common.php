@@ -100,6 +100,14 @@
     return $returned_array;
   }
 
+  function array_of_ids($array) {
+    $returned_array = array();
+    foreach ($array as $object) {
+      $returned_array[] = $object["id"];
+    }
+    return $returned_array;
+  }
+
   function array_to_string($array) {
     ob_start();
     var_dump($array);

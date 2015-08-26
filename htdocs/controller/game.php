@@ -3,6 +3,8 @@
   before_action("check_entry", array("show", "skip", "turn"), array("model_name" => "game"));
   before_action("create_form", array("new", "create"), "new_game");
   before_action("check_form", array("create"), "new_game");
+  before_action("create_form", array("show", "turn"), "turn");
+  before_action("check_form", array("turn"), "turn");
 
   switch ($_GET["action"]) {
 

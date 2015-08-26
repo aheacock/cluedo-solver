@@ -1,4 +1,6 @@
 <?php
+echo get_html_form("turn");
+
 $status_to_class = array(
   owned => "red",
   very_likely => "orange",

@@ -41,3 +41,25 @@
       $ascending
     );
   }
+
+  function next_player($player) {
+    $players = array_of_ids(select_suspects());
+    if ($player == max($players)) {
+      return min($players);
+    }
+    return $player + 1;
+  }
+
+  function increment_turn() {
+    $_SESSION["current_player"] = next_player($_SESSION["current_player"]);
+  }
+
+  function players_between($detective, $witness) {
+    $players_between = array();
+    $player = next_player($detective);
+    while ($player != $witness) {
+      $players_between[] = $player;
+      $player = next_player($player);
+    }
+    return $players_between;
+  }
