@@ -5,7 +5,9 @@
 <?php
 if ($_SESSION["current_player"] == my_player()) {
   echo form_input("réfute avec", "evidence", $form, array("options" => option_array(select_types(), "id", "name", "type")));
+} else {
+  echo "réfute";
 }
 ?>.
-
+<br>
 <?php echo form_submit_button("Ok"); ?> <?php echo link_to(path("skip", "game", $_SESSION["game"]), "Suivant", array("class" => "btn btn-primary")); ?>

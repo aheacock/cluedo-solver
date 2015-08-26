@@ -35,7 +35,7 @@
         } else {
           if (is_empty($_POST[$name]) && $field["type"] == "id" && !is_empty($field["multiple"])) {
             $sanitized_input[$name] = array();
-          } else {
+          } elseif (is_empty($field["optional"]) || !is_empty($_POST[$name])) {
             $sanitized_input[$name] = $_POST[$name];
           }
         }
@@ -215,7 +215,7 @@
       "amount" => 0,
       "quantity" => 0,
       "date" => "",
-      "id" => 1,
+      "id" => 0,
       "boolean" => 0,
       "text" => "",
       "name" => ""

@@ -15,7 +15,7 @@
     break;
 
   case "create":
-    $game["id"] = create_game();
+    $game["id"] = create_game($_POST["identity"]);
     $_SESSION["game"] = $game["id"];
     foreach ($_POST["cards_suspect"] as $suspect => $cards) {
       create_player($suspect, $cards);
@@ -29,6 +29,12 @@
 
   case "turn":
     create_turn($_POST);
+    set_if_not_set($_POST["witness"], $_SESSION["current_player"]);
+    foreach (players_between($_SESSION["current_player"], $_POST["witness"]) as $player) {
+      add_card_owner_status($_POST["weapon"], $player, not_owned);
+      add_card_owner_status($_POST["room"], $player, not_owned);
+      add_card_owner_status($_POST["suspect"], $player, not_owned);
+    }
     increment_turn();
     redirect_to_action("show");
     break;
