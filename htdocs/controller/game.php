@@ -12,7 +12,8 @@
     break;
 
   case "create":
-    $_SESSION["game"] = create_game();
+    $game["id"] = create_game();
+    $_SESSION["game"] = $game["id"];
     foreach ($_POST["cards_suspect"] as $suspect => $cards) {
       create_player($suspect, $cards);
     }

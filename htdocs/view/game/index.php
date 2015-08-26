@@ -3,7 +3,7 @@
   <?php
   foreach (select_games() as $game) {
     ?>
-    <li><?php echo pretty_game($game["id"]); ?></li>
+    <li><?php echo pretty_game($game); ?></li>
     <?php
   }
   ?>

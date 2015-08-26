@@ -17,3 +17,7 @@
   function pretty_suspect($suspect) {
     return select_card($suspect, array("name"))["name"];
   }
+
+  function pretty_game($game) {
+    return link_to(path("show", "game", $game["id"]), pretty_date(select_game($game["id"], array("date"))["date"]));
+  }
