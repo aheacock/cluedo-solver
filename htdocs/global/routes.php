@@ -120,24 +120,8 @@
 
     $GLOBALS["htaccess"] = $htaccess;
 
-    write_path_rule(substr(ROOT_PATH, 0, strlen(ROOT_PATH) -1), true_path("welcome", "home"));
-    if (!URL_REWRITE || ROOT_PATH != "") {
-      write_path_rule("home/login", true_path("login", "home"), "[NC,QSA]");
-    }
-    write_controller_rules(array("controller" => "home", "except" => array("new", "create", "show", "edit", "update", "delete"), "action_on_collection" => array("login", "logout", "welcome", "chose_identity", "bug_report")));
-    write_controller_rules(array("controller" => "binet", "except" => array("delete"), "action_on_member" => array("switch_subsidy_provider", "change_term", "power_transfer", "reactivate", "deactivate")));
-    write_controller_rules(array("controller" => "operation", "except" => array("delete"), "action_on_member" => array("validate", "reject")));
-    write_controller_rules(array("controller" => "tag", "except" => array("edit", "update", "delete")));
-    write_controller_rules(array("controller" => "wave", "except" => array("new", "create", "edit", "update", "delete", "show")));
-    write_controller_rules(array("controller" => "student", "except" => array("new", "create", "edit", "update", "delete", "index")));
-    write_controller_rules(array("controller" => "validation", "except" => array("show", "edit", "update", "new", "create", "delete")));
-
-    write_path_rule(path("", "binet", "([".allowed_clean_string_characters()."]+)/([0-9]+)"), true_path("", "budget", "", "binet/$1/$2"));
-    write_controller_rules(array("controller" => "member", "binet_prefix" => true, "except" => array("show", "edit", "update"), "action_on_collection" => array("new_viewer", "create_viewer"), "action_on_member" => array("delete_viewer")));
-    write_controller_rules(array("controller" => "budget", "binet_prefix" => true, "action_on_collection" => array("transfer", "copy")));
-    write_controller_rules(array("controller" => "operation", "binet_prefix" => true, "action_on_member" => array("validate", "review")));
-    write_controller_rules(array("controller" => "request", "binet_prefix" => true, "action_on_member" => array("send", "review", "grant", "reject", "send_back")));
-    write_controller_rules(array("controller" => "wave", "binet_prefix" => true, "except" => array("delete"), "action_on_member" => array("publish", "open")));
+    write_path_rule(substr(ROOT_PATH, 0, strlen(ROOT_PATH) -1), true_path("game", "index"));
+    write_controller_rules(array("controller" => "game", "except" => array("edit", "update", "delete"), "action_on_member" => array("turn", "skip")));
 
     fclose($htaccess);
   }
