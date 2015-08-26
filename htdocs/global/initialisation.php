@@ -24,17 +24,9 @@
   include GLOBAL_PATH."email.php";
   include GLOBAL_PATH."form.php";
 
-  include MODEL_PATH."budget.php";
-  include MODEL_PATH."tag.php";
-  include MODEL_PATH."operation.php";
-  include MODEL_PATH."operation_types.php";
-  include MODEL_PATH."subsidy.php";
-  include MODEL_PATH."request.php";
-  include MODEL_PATH."student.php";
-  include MODEL_PATH."binet.php";
-  include MODEL_PATH."wave.php";
-  include MODEL_PATH."term.php";
-  include MODEL_PATH."member.php";
+  include MODEL_PATH."card.php";
+  include MODEL_PATH."player.php";
+  include MODEL_PATH."turn.php";
 
   include HELPER_PATH."common.php";
   include HELPER_PATH."pretty_print.php";
