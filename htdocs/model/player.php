@@ -16,7 +16,7 @@
     $player = select_entry(
       "player",
       array("id", "cards", "game"),
-      $budget,
+      $player,
       $fields
     );
     return $player;
