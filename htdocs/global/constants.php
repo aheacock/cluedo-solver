@@ -28,3 +28,4 @@
 
   define("total_card_number", 21);
   define("dead_card_number", 3);
+  define("dealed_card_number", total_card_number - dead_card_number);

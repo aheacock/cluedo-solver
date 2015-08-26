@@ -10,6 +10,10 @@ function select_card($card, $fields = array()) {
   return $card;
 }
 
+function exists_card($card) {
+  return select_card($card) ? true : false;
+}
+
 function select_cards($criteria = array(), $order_by = NULL, $ascending = true) {
   return select_entries(
     "card",
