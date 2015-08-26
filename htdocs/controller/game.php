@@ -16,7 +16,7 @@
       create_player($suspect, $cards);
     }
     foreach ($_POST["known_cards"] as $card) {
-      add_card_owner($_POST["identity"], $card);
+      add_card_owner_status($card, $_POST["identity"], owned);
     }
     redirect_to_action("show");
     break;

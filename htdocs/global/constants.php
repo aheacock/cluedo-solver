@@ -15,3 +15,8 @@
   define("weapon", 1);
   define("suspect", 2);
   define("room", 3);
+
+  define("owned", 3);
+  define("very_likely", 2);
+  define("likely", 1);
+  define("not_owned", 0);
