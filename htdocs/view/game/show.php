@@ -16,7 +16,7 @@ $status_to_class = array(
     <tr>
       <th></th>
       <?php
-      foreach (select_suspects() as $player) {
+      foreach (select_players() as $player) {
         echo "<th>".pretty_card($player)."</th>";
       }
       ?>
@@ -29,7 +29,7 @@ $status_to_class = array(
       <tr>
         <td><?php echo pretty_card($weapon); ?></td>
         <?php
-        foreach (select_suspects() as $player) {
+        foreach (select_players() as $player) {
           $class = "status-".$status_to_class[get_status($weapon["id"], $player["id"])];
           ?>
           <td class="<?php echo $class; ?>"></td>
@@ -49,7 +49,7 @@ $status_to_class = array(
     <tr>
       <th></th>
       <?php
-      foreach (select_suspects() as $player) {
+      foreach (select_players() as $player) {
         echo "<th>".pretty_card($player)."</th>";
       }
       ?>
@@ -62,7 +62,7 @@ $status_to_class = array(
       <tr>
         <td><?php echo pretty_card($suspect); ?></td>
         <?php
-        foreach (select_suspects() as $player) {
+        foreach (select_players() as $player) {
           $class = "status-".$status_to_class[get_status($suspect["id"], $player["id"])];
           ?>
           <td class="<?php echo $class; ?>"></td>
@@ -82,7 +82,7 @@ $status_to_class = array(
     <tr>
       <th></th>
       <?php
-      foreach (select_suspects() as $player) {
+      foreach (select_players() as $player) {
         echo "<th>".pretty_card($player)."</th>";
       }
       ?>
@@ -95,7 +95,7 @@ $status_to_class = array(
       <tr>
         <td><?php echo pretty_card($room); ?></td>
         <?php
-        foreach (select_suspects() as $player) {
+        foreach (select_players() as $player) {
           $class = "status-".$status_to_class[get_status($room["id"], $player["id"])];
           ?>
           <td class="<?php echo $class; ?>"></td>
@@ -108,3 +108,57 @@ $status_to_class = array(
     ?>
   </tbody>
 </table>
+
+<h1>Non résolus</h1>
+
+<?php
+foreach (select_players() as $player) {
+  $remaining_cards = select_cards_player($player["id"]) - count(known_cards_player($player["id"]));
+  if ($remaining_cards > 0) {
+    ?>
+    <h2><?php echo pretty_card($player)." (".$remaining_cards.")"; ?></h2>
+    <table>
+      <tbody>
+        <?php
+        foreach (select_turns() as $turn) {
+          $turn = select_turn($turn["id"], array("id", "weapon", "room", "suspect", "witness"));
+          if (!is_empty($turn["witness"]) && $player["id"] == $turn["witness"]) {
+            $status_weapon = get_status($turn["weapon"], $turn["witness"]);
+            $status_room = get_status($turn["room"], $turn["witness"]);
+            $status_suspect = get_status($turn["suspect"], $turn["witness"]);
+            if ($status_weapon != owned && $status_room != owned && $status_suspect != owned) {
+              ?>
+              <tr>
+                <td>
+                  <?php
+                  if ($status_weapon != not_owned) {
+                    echo pretty_card(array("id" => $turn["weapon"]));
+                  }
+                  ?>
+                </td>
+                <td>
+                  <?php
+                  if ($status_suspect != not_owned) {
+                    echo pretty_card(array("id" => $turn["room"]));
+                  }
+                  ?>
+                </td>
+                <td>
+                  <?php
+                  if ($status_room != not_owned) {
+                    echo pretty_card(array("id" => $turn["room"]));
+                  }
+                  ?>
+                </td>
+              </tr>
+              <?php
+            }
+          }
+        }
+        ?>
+      </tbody>
+    </table>
+    <?php
+  }
+}
+?>

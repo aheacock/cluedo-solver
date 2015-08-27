@@ -38,3 +38,29 @@
       $ascending
     );
   }
+
+  function next_player($player) {
+    $players = array_of_ids(select_players());
+    foreach ($players as $i => $p) {
+      if ($p == $player) {
+        $index = $i;
+      }
+    }
+    set_if_exists($next_player, $players[$index + 1]);
+    set_if_not_set($next_player, $players[0]);
+    return $next_player;
+  }
+
+  function increment_turn() {
+    $_SESSION["current_player"] = next_player($_SESSION["current_player"]);
+  }
+
+  function players_between($detective, $witness) {
+    $players_between = array();
+    $player = next_player($detective);
+    while ($player != $witness) {
+      $players_between[] = $player;
+      $player = next_player($player);
+    }
+    return $players_between;
+  }
