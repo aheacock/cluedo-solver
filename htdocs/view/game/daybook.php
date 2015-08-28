@@ -1,5 +1,5 @@
 <h1>Déroulé de la partie</h1>
-<?php echo link_to(path("show", "game", $_SESSION["game"]), "Retour", array("class" => "btn btn-primary")); ?>
+<?php echo link_to(path("show", "game", game), "Retour", array("class" => "btn btn-primary")); ?>
 <table class="table table-bordered table-hover table-small-char">
   <thead>
     <tr>
@@ -49,4 +49,4 @@
     ?>
   </tbody>
 </table>
-<?php echo link_to(path("show", "game", $_SESSION["game"]), "Retour", array("class" => "btn btn-primary")); ?>
+<?php echo link_to(path("show", "game", game), "Retour", array("class" => "btn btn-primary")); ?>

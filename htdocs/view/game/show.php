@@ -163,4 +163,4 @@ foreach (select_players() as $player) {
 }
 ?>
 
-<?php echo link_to(path("daybook", "game", $_SESSION["game"]), "Déroulé de la partie", array("class" => "btn btn-primary")); ?>
+<?php echo link_to(path("daybook", "game", game), "Déroulé de la partie", array("class" => "btn btn-primary")); ?>

@@ -32,5 +32,5 @@ function select_games($criteria = array(), $order_by = NULL, $ascending = true) 
 }
 
 function my_player() {
-  return select_game($_SESSION["game"], array("my_player"))["my_player"];
+  return select_game(game, array("my_player"))["my_player"];
 }

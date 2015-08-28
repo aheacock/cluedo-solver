@@ -82,6 +82,7 @@
     foreach ($criteria as $column => $value) {
       header_if($value != $entry[$column], 403);
     }
+    define($array["model_name"], $entry["id"]);
     $GLOBALS[$array["model_name"]] = $entry;
   }
 

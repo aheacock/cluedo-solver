@@ -3,7 +3,7 @@
   function create_player($player, $cards) {
     $values["player"] = $player;
     $values["cards"] = $cards;
-    $values["game"] = $_SESSION["game"];
+    $values["game"] = game;
     return create_entry(
       "player",
       array("player", "cards", "game"),
@@ -18,7 +18,7 @@
       "player",
       array("player", "cards", "game"),
       array(),
-      array("game" => $_SESSION["game"], "player" => $player)
+      array("game" => game, "player" => $player)
     );
     if (!is_empty($player[0]["cards"])) {
       return $player[0]["cards"];
@@ -27,7 +27,7 @@
   }
 
   function select_players($criteria = array(), $order_by = NULL, $ascending = true) {
-    set_if_not_set($criteria["game"], $_SESSION["game"]);
+    set_if_not_set($criteria["game"], game);
     return select_with_request_string(
       "player as id",
       "player",
@@ -52,7 +52,7 @@
   }
 
   function increment_turn() {
-    $_SESSION["current_player"] = next_player($_SESSION["current_player"]);
+    set_current_player(next_player(get_current_player()));
   }
 
   function players_between($detective, $witness) {
@@ -63,4 +63,14 @@
       $player = next_player($player);
     }
     return $players_between;
+  }
+
+  function get_current_player() {
+    set_if_exists($current_player, $_SESSION["current_player"]);
+    set_if_not_set($current_player, select_players()[0]["id"]);
+    return $current_player;
+  }
+
+  function set_current_player($player) {
+    $_SESSION["current_player"] = $player;
   }
