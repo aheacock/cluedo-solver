@@ -117,7 +117,7 @@ foreach (select_players() as $player) {
   if ($remaining_cards > 0) {
     ?>
     <h2><?php echo pretty_card($player)." (".$remaining_cards.")"; ?></h2>
-    <table>
+    <table class="table table-bordered table-hover table-small-char">
       <tbody>
         <?php
         foreach (select_turns() as $turn) {
@@ -139,7 +139,7 @@ foreach (select_players() as $player) {
                 <td>
                   <?php
                   if ($status_suspect != not_owned) {
-                    echo pretty_card(array("id" => $turn["room"]));
+                    echo pretty_card(array("id" => $turn["suspect"]));
                   }
                   ?>
                 </td>
@@ -162,3 +162,5 @@ foreach (select_players() as $player) {
   }
 }
 ?>
+
+<?php echo link_to(path("daybook", "game", $_SESSION["game"]), "Déroulé de la partie", array("class" => "btn btn-primary")); ?>

@@ -21,3 +21,7 @@
   function pretty_game($game) {
     return link_to(path("show", "game", $game["id"]), pretty_date(select_game($game["id"], array("date"))["date"]));
   }
+
+  function pretty_type($type) {
+    return select_type($type["id"], array("name"))["name"];
+  }

@@ -10,4 +10,5 @@
     RewriteRule ^game/([0-9]+)/show/?$ ./index.php?controller=game&action=show&game=$1&%{QUERY_STRING} [L,NC,QSA]
     RewriteRule ^game/([0-9]+)/turn/?$ ./index.php?controller=game&action=turn&game=$1&%{QUERY_STRING} [L,NC,QSA]
     RewriteRule ^game/([0-9]+)/skip/?$ ./index.php?controller=game&action=skip&game=$1&%{QUERY_STRING} [L,NC,QSA]
+    RewriteRule ^game/([0-9]+)/daybook/?$ ./index.php?controller=game&action=daybook&game=$1&%{QUERY_STRING} [L,NC,QSA]
     

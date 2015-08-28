@@ -75,6 +75,9 @@
     $_SESSION["game"] = $game["id"];
     break;
 
+  case "daybook":
+    break;
+
   default:
     header_if(true, 403);
     exit;

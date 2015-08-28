@@ -5,7 +5,7 @@
     $values["game"] = $_SESSION["game"];
     return create_entry(
       "turn",
-      array("player", "room", "weapon", "suspect", "witness", "testimony", "game"),
+      array("player", "room", "weapon", "suspect", "witness", "evidence", "game"),
       array(),
       $values
     );
@@ -14,7 +14,7 @@
   function select_turn($turn, $fields = array()) {
     $turn = select_entry(
       "turn",
-      array("id", "player", "room", "weapon", "suspect", "witness", "testimony", "game"),
+      array("id", "player", "room", "weapon", "suspect", "witness", "evidence", "game"),
       $turn,
       $fields
     );
@@ -29,7 +29,7 @@
     set_if_not_set($criteria["game"], $_SESSION["game"]);
     return select_entries(
       "turn",
-      array("id", "player", "room", "weapon", "suspect", "witness", "testimony", "game"),
+      array("id", "player", "room", "weapon", "suspect", "witness", "evidence", "game"),
       array(),
       array(),
       $criteria,
