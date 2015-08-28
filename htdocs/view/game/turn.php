@@ -10,4 +10,11 @@ if ($_SESSION["current_player"] == my_player()) {
 }
 ?>.
 <br>
-<?php echo form_submit_button("Ok"); ?> <?php echo link_to(path("skip", "game", $_SESSION["game"]), "Suivant", array("class" => "btn btn-primary")); ?>
+<?php
+$turns = select_turns();
+echo
+  form_submit_button("Ok") . " " .
+  link_to(path("skip", "game", $_SESSION["game"]), "Suivant", array("class" => "btn btn-primary")) . " " .
+  (!is_empty($turns) ? link_to(path("revert", "game", $_SESSION["game"]), "Annuler le dernier coup", array("class" => "btn btn-primary")) : "")
+;
+?>

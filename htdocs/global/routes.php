@@ -121,7 +121,7 @@
     $GLOBALS["htaccess"] = $htaccess;
 
     write_path_rule(substr(ROOT_PATH, 0, strlen(ROOT_PATH) -1), true_path("index", "game"));
-    write_controller_rules(array("controller" => "game", "except" => array("edit", "update", "delete"), "action_on_member" => array("turn", "skip", "daybook")));
+    write_controller_rules(array("controller" => "game", "except" => array("edit", "update", "delete"), "action_on_member" => array("turn", "skip", "daybook", "revert")));
 
     fclose($htaccess);
   }

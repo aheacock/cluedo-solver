@@ -37,3 +37,7 @@
       $ascending
     );
   }
+
+  function delete_turn($turn) {
+    delete_entry("turn", $turn);
+  }

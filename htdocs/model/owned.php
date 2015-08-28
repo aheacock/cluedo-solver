@@ -5,10 +5,11 @@
       $values["player"] = $player;
       $values["card"] = $card;
       $values["game"] = $_SESSION["game"];
+      $values["turn"] = turn;
       $values["status"] = $status;
       create_entry(
         "owned",
-        array("card", "game", "player", "status"),
+        array("card", "game", "player", "status", "turn"),
         array(),
         $values
       );
@@ -83,4 +84,11 @@
       array(),
       array("game" => $_SESSION["game"], "card" => array("IN", array_of_ids(select_cards(array("type" => $type)))), "status" => owned)
     ));
+  }
+  
+  function delete_owned_of_turn($turn) {
+    $sql = "DELETE FROM owned WHERE turn = :turn";
+    $req = Database::get()->prepare($sql);
+    $req->bindValue(':turn', $turn, PDO::PARAM_INT);
+    $req->execute();
   }

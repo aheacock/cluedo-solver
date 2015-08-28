@@ -1,6 +1,6 @@
 <?php
 
-  before_action("check_entry", array("show", "skip", "turn"), array("model_name" => "game"));
+  before_action("check_entry", array("show", "skip", "turn", "daybook", "revert"), array("model_name" => "game"));
   before_action("create_form", array("new", "create"), "new_game");
   before_action("check_form", array("create"), "new_game");
   before_action("create_form", array("show", "turn"), "turn");
@@ -17,6 +17,7 @@
   case "create":
     $game["id"] = create_game($_POST["identity"]);
     $_SESSION["game"] = $game["id"];
+    define("turn", -1);
     foreach ($_POST["cards_suspect"] as $suspect => $cards) {
       create_player($suspect, $cards);
     }
@@ -35,7 +36,7 @@
     break;
 
   case "turn":
-    create_turn($_POST);
+    define("turn", create_turn($_POST));
     set_if_not_set($_POST["witness"], $_SESSION["current_player"]);
     foreach (players_between($_SESSION["current_player"], $_POST["witness"]) as $player) {
       add_card_owner_status($_POST["weapon"], $player, not_owned);
@@ -76,6 +77,13 @@
     break;
 
   case "daybook":
+    break;
+
+  case "revert":
+    $turn = max(array_of_ids(select_turns()));
+    delete_turn($turn);
+    delete_owned_of_turn($turn);
+    redirect_to_action("show");
     break;
 
   default:
